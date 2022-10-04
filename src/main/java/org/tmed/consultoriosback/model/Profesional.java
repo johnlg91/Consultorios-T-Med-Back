@@ -20,15 +20,17 @@ public class Profesional {
     private String telefonoCelular;
     private String eMail;
     private String notas;
+    private boolean oculto;
 
-    public Profesional() {}
+    public Profesional() {
+    }
 
     public Profesional(int id, String eMail) {
         this.id = id;
         this.eMail = eMail;
     }
 
-    public Profesional(long id, long dni, String nombre, String apellido, String sobrenombre, String especialidad, Date fechaDeSubscripcion, String direccion, String telefonoCelular, String eMail, String notas) {
+    public Profesional(long id, long dni, String nombre, String apellido, String sobrenombre, String especialidad, Date fechaDeSubscripcion, String direccion, String telefonoCelular, String eMail, String notas, boolean oculto) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -40,6 +42,7 @@ public class Profesional {
         this.telefonoCelular = telefonoCelular;
         this.eMail = eMail;
         this.notas = notas;
+        this.oculto = oculto;
     }
 
     public long getId() {
@@ -86,6 +89,10 @@ public class Profesional {
         return notas;
     }
 
+    public boolean isOculto() {
+        return oculto;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -128,5 +135,9 @@ public class Profesional {
 
     public void setNotas(String notas) {
         this.notas = notas;
+    }
+
+    public void setOculto(boolean oculto) {
+        this.oculto = oculto;
     }
 }

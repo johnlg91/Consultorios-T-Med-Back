@@ -3,30 +3,29 @@ package org.tmed.consultoriosback.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@SuppressWarnings("unused")
 @Table("CONSULTORIOS")
-public class Consultorios {
+public class Consultorio {
 
     @Id
     private long id;
     private long numeroDeConsultorio;
     private long costoPorModulo;
     private long tamannioDelArea;
-    private String imagenes;
     private String equipo;
     private String especialidades;
+    private boolean oculto;
 
-    public Consultorios() {
+    public Consultorio() {
     }
 
-    public Consultorios(long id, long numeroDeConsultorio, long costoPorModulo, long tamannioDelArea, String imagenes, String equipo, String especialidades) {
+    public Consultorio(long id, long numeroDeConsultorio, long costoPorModulo, long tamannioDelArea, String equipo, String especialidades, boolean oculto) {
         this.id = id;
         this.numeroDeConsultorio = numeroDeConsultorio;
         this.costoPorModulo = costoPorModulo;
         this.tamannioDelArea = tamannioDelArea;
-        this.imagenes = imagenes;
         this.equipo = equipo;
         this.especialidades = especialidades;
+        this.oculto = oculto;
     }
 
     public long getId() {
@@ -65,15 +64,6 @@ public class Consultorios {
     }
 
 
-    public String getImagenes() {
-        return imagenes;
-    }
-
-    public void setImagenes(String imagenes) {
-        this.imagenes = imagenes;
-    }
-
-
     public String getEquipo() {
         return equipo;
     }
@@ -91,4 +81,11 @@ public class Consultorios {
         this.especialidades = especialidades;
     }
 
+    public boolean isOculto() {
+        return oculto;
+    }
+
+    public void setOculto(boolean oculto) {
+        this.oculto = oculto;
+    }
 }

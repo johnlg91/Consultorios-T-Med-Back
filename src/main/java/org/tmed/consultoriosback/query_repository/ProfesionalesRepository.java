@@ -1,5 +1,6 @@
-package org.tmed.consultoriosback.repository;
+package org.tmed.consultoriosback.query_repository;
 
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -11,6 +12,14 @@ import java.util.Optional;
 @Repository
 public interface ProfesionalesRepository extends CrudRepository<Profesional, Long> {
 
-    @Query("SELECT * FROM PROFESIONALES where DNI = :dni")
+    @Query("SELECT * FROM PROFESIONALES WHERE OCULTO = 0")
+    Iterable<Profesional> getProfesionales();
+
+    @Query("SELECT * FROM PROFESIONALES WHERE DNI = :dni AND OCULTO = 0")
     Optional<Profesional> findByDni(@Param("dni") long dni);
+
+    @Modifying
+    @Query("UPDATE PROFESIONALES SET OCULTO = 1 WHERE ID = :id")
+    void deleteProfesional(@Param("id") long id);
+
 }
