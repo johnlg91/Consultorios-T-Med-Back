@@ -10,7 +10,7 @@ public class Consultorio {
     private long id;
     private long numeroDeConsultorio;
     private long costoPorModulo;
-    private long tamannioDelArea;
+    private long tamanioDelArea;
     private String equipo;
     private String especialidades;
     private boolean oculto;
@@ -18,11 +18,11 @@ public class Consultorio {
     public Consultorio() {
     }
 
-    public Consultorio(long id, long numeroDeConsultorio, long costoPorModulo, long tamannioDelArea, String equipo, String especialidades, boolean oculto) {
+    public Consultorio(long id, long numeroDeConsultorio, long costoPorModulo, long tamanioDelArea, String equipo, String especialidades, boolean oculto) {
         this.id = id;
         this.numeroDeConsultorio = numeroDeConsultorio;
         this.costoPorModulo = costoPorModulo;
-        this.tamannioDelArea = tamannioDelArea;
+        this.tamanioDelArea = tamanioDelArea;
         this.equipo = equipo;
         this.especialidades = especialidades;
         this.oculto = oculto;
@@ -55,12 +55,12 @@ public class Consultorio {
     }
 
 
-    public long getTamannioDelArea() {
-        return tamannioDelArea;
+    public long getTamanioDelArea() {
+        return tamanioDelArea;
     }
 
-    public void setTamannioDelArea(long tamannioDelArea) {
-        this.tamannioDelArea = tamannioDelArea;
+    public void setTamanioDelArea(long tamanioDelArea) {
+        this.tamanioDelArea = tamanioDelArea;
     }
 
 

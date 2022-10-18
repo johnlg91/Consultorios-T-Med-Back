@@ -6,7 +6,7 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.sql.Time;
 
 @Table("ALQUILERES_VACANCIA")
-public class AlquileresVacancia {
+public class AlquilerVacancia {
 
     @Id
     private long id;
@@ -14,14 +14,14 @@ public class AlquileresVacancia {
     private String diaDeLaSemana;
     private java.sql.Time empiezaVacancia;
     private java.sql.Time terminaVacancia;
-    private long oculto;
+    private boolean oculto;
 
-    public AlquileresVacancia() {}
+    public AlquilerVacancia() {}
 
-    public AlquileresVacancia(long id, long idContratoDeAlquiler, String diaDeLaSemana, Time empiezaVacancia, Time terminaVacancia, long oculto) {
+    public AlquilerVacancia(long id, long idContratoDeAlquiler, DiaDeLaSemana diaDeLaSemana, Time empiezaVacancia, Time terminaVacancia, boolean oculto) {
         this.id = id;
         this.idContratoDeAlquiler = idContratoDeAlquiler;
-        this.diaDeLaSemana = diaDeLaSemana;
+        this.diaDeLaSemana = diaDeLaSemana.name();
         this.empiezaVacancia = empiezaVacancia;
         this.terminaVacancia = terminaVacancia;
         this.oculto = oculto;
@@ -45,12 +45,12 @@ public class AlquileresVacancia {
     }
 
 
-    public String getDiaDeLaSemana() {
-        return diaDeLaSemana;
+    public DiaDeLaSemana getDiaDeLaSemana() {
+        return DiaDeLaSemana.valueOf(diaDeLaSemana);
     }
 
-    public void setDiaDeLaSemana(String diaDeLaSemana) {
-        this.diaDeLaSemana = diaDeLaSemana;
+    public void setDiaDeLaSemana(DiaDeLaSemana diaDeLaSemana) {
+        this.diaDeLaSemana = diaDeLaSemana.name();
     }
 
 
@@ -72,12 +72,15 @@ public class AlquileresVacancia {
     }
 
 
-    public long getOculto() {
+    public void setDiaDeLaSemana(String diaDeLaSemana) {
+        this.diaDeLaSemana = diaDeLaSemana;
+    }
+
+    public boolean getOculto() {
         return oculto;
     }
 
-    public void setOculto(long oculto) {
+    public void setOculto(boolean oculto) {
         this.oculto = oculto;
     }
-
 }

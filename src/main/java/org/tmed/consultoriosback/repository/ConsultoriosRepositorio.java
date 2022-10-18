@@ -1,4 +1,4 @@
-package org.tmed.consultoriosback.query_repository;
+package org.tmed.consultoriosback.repository;
 
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.tmed.consultoriosback.model.Consultorio;
 
 @Repository
-public interface ConsultorioRepository extends CrudRepository<Consultorio, Long> {
+public interface ConsultoriosRepositorio extends CrudRepository<Consultorio, Long> {
 
     @Query("SELECT * FROM CONSULTORIOS WHERE OCULTO = 0")
     Iterable<Consultorio> getConsultorios();

@@ -1,35 +1,47 @@
-package com.sample;
+package org.tmed.consultoriosback.model;
 
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.sql.Date;
 
-public class ContratosDeAlquiler {
+@Table("CONTRATOS_DE_ALQUILER")
+public class ContratoDeAlquiler {
 
+    @Id
     private long id;
     private long idConsultorio;
     private long idProfesional;
     private String tipoDeAlquiler;
-    private java.sql.Date empiezaElContrato;
+
+    private java.sql.Date inicioDelContratoDeAlquiler;
     private java.sql.Date finDelContrato;
     private long costoTotal;
     private String notas;
-    private java.sql.Date fechaDeAlquiler;
-    private long oculto;
+    private boolean oculto;
 
-    public ContratosDeAlquiler() {
+    public ContratoDeAlquiler() {
     }
 
-    public ContratosDeAlquiler(long id, long idConsultorio, long idProfesional, String tipoDeAlquiler, Date empiezaElContrato, Date finDelContrato, long costoTotal, String notas, Date fechaDeAlquiler, long oculto) {
+    public ContratoDeAlquiler(long id, long idConsultorio, long idProfesional, String tipoDeAlquiler, Date inicioDelContratoDeAlquiler, Date finDelContrato, long costoTotal, String notas, boolean oculto) {
         this.id = id;
         this.idConsultorio = idConsultorio;
         this.idProfesional = idProfesional;
         this.tipoDeAlquiler = tipoDeAlquiler;
-        this.empiezaElContrato = empiezaElContrato;
-        this.finDelContrato = finDelContrato;
+        this.inicioDelContratoDeAlquiler = inicioDelContratoDeAlquiler;
+        this.finDelContrato = finDelContrato == null ? inicioDelContratoDeAlquiler : finDelContrato;
         this.costoTotal = costoTotal;
         this.notas = notas;
-        this.fechaDeAlquiler = fechaDeAlquiler;
         this.oculto = oculto;
+    }
+
+    public Date getInicioDelContratoDeAlquiler() {
+        return inicioDelContratoDeAlquiler;
+    }
+
+    public void setInicioDelContratoDeAlquiler(Date inicioDelContratoDeAlquiler) {
+        this.inicioDelContratoDeAlquiler = inicioDelContratoDeAlquiler;
     }
 
     public long getId() {
@@ -68,15 +80,6 @@ public class ContratosDeAlquiler {
     }
 
 
-    public java.sql.Date getEmpiezaElContrato() {
-        return empiezaElContrato;
-    }
-
-    public void setEmpiezaElContrato(java.sql.Date empiezaElContrato) {
-        this.empiezaElContrato = empiezaElContrato;
-    }
-
-
     public java.sql.Date getFinDelContrato() {
         return finDelContrato;
     }
@@ -104,20 +107,11 @@ public class ContratosDeAlquiler {
     }
 
 
-    public java.sql.Date getFechaDeAlquiler() {
-        return fechaDeAlquiler;
-    }
-
-    public void setFechaDeAlquiler(java.sql.Date fechaDeAlquiler) {
-        this.fechaDeAlquiler = fechaDeAlquiler;
-    }
-
-
-    public long getOculto() {
+    public boolean getOculto() {
         return oculto;
     }
 
-    public void setOculto(long oculto) {
+    public void setOculto(boolean oculto) {
         this.oculto = oculto;
     }
 

@@ -6,14 +6,14 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.tmed.consultoriosback.model.Profesional;
-import org.tmed.consultoriosback.query_repository.ProfesionalesRepository;
+import org.tmed.consultoriosback.repository.ProfesionalesRepositorio;
 
 @RestController
 public class ProfesionalController {
-    final ProfesionalesRepository profesionales;
+    final ProfesionalesRepositorio profesionales;
 
     @Autowired
-    public ProfesionalController(ProfesionalesRepository profesionales) {
+    public ProfesionalController(ProfesionalesRepositorio profesionales) {
         this.profesionales = profesionales;
     }
 

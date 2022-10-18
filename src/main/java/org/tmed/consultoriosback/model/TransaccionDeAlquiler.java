@@ -1,22 +1,26 @@
-package com.sample;
+package org.tmed.consultoriosback.model;
 
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.sql.Date;
 
-public class TransaccionesDeAlquileres {
-
+@Table("TRANSACCIONES_DE_ALQUILERES")
+public class TransaccionDeAlquiler {
+    @Id
     private long id;
     private long idProfesional;
     private java.sql.Date fechaDeTransaccion;
     private String tipo;
     private String metodoDePago;
     private double cantidad;
-    private long oculto;
+    private boolean oculto;
 
-    public TransaccionesDeAlquileres() {
+    public TransaccionDeAlquiler() {
     }
 
-    public TransaccionesDeAlquileres(long id, long idProfesional, Date fechaDeTransaccion, String tipo, String metodoDePago, double cantidad, long oculto) {
+    public TransaccionDeAlquiler(long id, long idProfesional, Date fechaDeTransaccion, String tipo, String metodoDePago, double cantidad, boolean oculto) {
         this.id = id;
         this.idProfesional = idProfesional;
         this.fechaDeTransaccion = fechaDeTransaccion;
@@ -80,11 +84,11 @@ public class TransaccionesDeAlquileres {
     }
 
 
-    public long getOculto() {
+    public boolean getOculto() {
         return oculto;
     }
 
-    public void setOculto(long oculto) {
+    public void setOculto(boolean oculto) {
         this.oculto = oculto;
     }
 

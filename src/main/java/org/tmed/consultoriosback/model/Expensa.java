@@ -1,24 +1,28 @@
-package com.sample;
+package org.tmed.consultoriosback.model;
 
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.sql.Date;
 
-public class Expensas {
-
+@Table("EXPENSAS")
+public class Expensa {
+    @Id
     private long id;
-    private String descripción;
+    private String descripcion;
     private java.sql.Date fechaDeExpensa;
     private double cantidad;
     private String seRepite;
     private java.sql.Date fechaDePago;
-    private long oculto;
+    private boolean oculto;
 
-    public Expensas() {
+    public Expensa() {
     }
 
-    public Expensas(long id, String descripción, Date fechaDeExpensa, double cantidad, String seRepite, Date fechaDePago, long oculto) {
+    public Expensa(long id, String descripcion, Date fechaDeExpensa, double cantidad, String seRepite, Date fechaDePago, boolean oculto) {
         this.id = id;
-        this.descripción = descripción;
+        this.descripcion = descripcion;
         this.fechaDeExpensa = fechaDeExpensa;
         this.cantidad = cantidad;
         this.seRepite = seRepite;
@@ -35,12 +39,12 @@ public class Expensas {
     }
 
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
 
@@ -80,11 +84,11 @@ public class Expensas {
     }
 
 
-    public long getOculto() {
+    public boolean getOculto() {
         return oculto;
     }
 
-    public void setOculto(long oculto) {
+    public void setOculto(boolean oculto) {
         this.oculto = oculto;
     }
 

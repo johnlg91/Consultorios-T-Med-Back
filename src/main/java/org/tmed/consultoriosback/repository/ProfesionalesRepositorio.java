@@ -1,4 +1,4 @@
-package org.tmed.consultoriosback.query_repository;
+package org.tmed.consultoriosback.repository;
 
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
@@ -10,7 +10,7 @@ import org.tmed.consultoriosback.model.Profesional;
 import java.util.Optional;
 
 @Repository
-public interface ProfesionalesRepository extends CrudRepository<Profesional, Long> {
+public interface ProfesionalesRepositorio extends CrudRepository<Profesional, Long> {
 
     @Query("SELECT * FROM PROFESIONALES WHERE OCULTO = 0")
     Iterable<Profesional> getProfesionales();

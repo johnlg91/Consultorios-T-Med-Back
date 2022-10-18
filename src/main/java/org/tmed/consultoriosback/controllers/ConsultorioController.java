@@ -6,14 +6,14 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.tmed.consultoriosback.model.Consultorio;
-import org.tmed.consultoriosback.query_repository.ConsultorioRepository;
+import org.tmed.consultoriosback.repository.ConsultoriosRepositorio;
 
 @RestController
 public class ConsultorioController {
-    final ConsultorioRepository consultoriosRep;
+    final ConsultoriosRepositorio consultoriosRep;
 
     @Autowired
-    public ConsultorioController(ConsultorioRepository consultoriosRep) {
+    public ConsultorioController(ConsultoriosRepositorio consultoriosRep) {
         this.consultoriosRep = consultoriosRep;
     }
 

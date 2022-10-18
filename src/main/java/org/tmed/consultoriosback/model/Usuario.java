@@ -1,20 +1,23 @@
-package com.sample;
+package org.tmed.consultoriosback.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
-public class Usuarios {
-
+@Table("USUARIOS")
+public class Usuario {
+    @Id
     private long id;
     private String usuario;
     private String nombreUsuario;
     private String email;
     private String contrasennia;
     private long esAdmin;
-    private long oculto;
+    private boolean oculto;
 
-    public Usuarios() {
+    public Usuario() {
     }
 
-    public Usuarios(long id, String usuario, String nombreUsuario, String email, String contrasennia, long esAdmin, long oculto) {
+    public Usuario(long id, String usuario, String nombreUsuario, String email, String contrasennia, long esAdmin, boolean oculto) {
         this.id = id;
         this.usuario = usuario;
         this.nombreUsuario = nombreUsuario;
@@ -78,11 +81,11 @@ public class Usuarios {
     }
 
 
-    public long getOculto() {
+    public boolean getOculto() {
         return oculto;
     }
 
-    public void setOculto(long oculto) {
+    public void setOculto(boolean oculto) {
         this.oculto = oculto;
     }
 
