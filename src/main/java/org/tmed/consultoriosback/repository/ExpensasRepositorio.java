@@ -11,7 +11,7 @@ import org.tmed.consultoriosback.model.Expensa;
 public interface ExpensasRepositorio extends CrudRepository<Expensa, Long> {
 
     @Query("SELECT * FROM EXPENSAS WHERE OCULTO = 0")
-    Iterable<Expensa> getExpensa();
+    Iterable<Expensa> getExpensas();
 
     @Modifying
     @Query("UPDATE EXPENSAS SET OCULTO = 1 WHERE ID = :id")
