@@ -9,7 +9,7 @@ import org.tmed.consultoriosback.model.AlquilerVacancia;
 import org.tmed.consultoriosback.model.componentesJson.CoordenadaDeMatriz;
 import org.tmed.consultoriosback.repository.AlquileresVacanciaRepositorio;
 
-import java.util.Date;
+import java.sql.Date;
 
 @RestController
 public class AlquileresVacanciaController {
@@ -28,10 +28,10 @@ public class AlquileresVacanciaController {
 
     @GetMapping("/vacancias")
     public Iterable<CoordenadaDeMatriz> getAlquileresVacancias(
-            @RequestParam(name = "inicio") long inicio,
-            @RequestParam(name = "fin") long fin
+            @RequestParam(name = "inicio") String inicio,
+            @RequestParam(name = "fin") String fin
     ) {
-        return alquileresVacanciaRep.getAlquileresVacanciaParaMatriz(new Date(inicio), new Date(fin));
+        return alquileresVacanciaRep.getAlquileresVacanciaParaMatriz(Date.valueOf(inicio), Date.valueOf(fin));
     }
 
     @GetMapping(value = "/vacancias/{id}")

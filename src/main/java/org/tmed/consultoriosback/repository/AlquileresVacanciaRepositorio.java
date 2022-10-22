@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.tmed.consultoriosback.model.AlquilerVacancia;
 import org.tmed.consultoriosback.model.componentesJson.CoordenadaDeMatriz;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Repository
 public interface AlquileresVacanciaRepositorio extends CrudRepository<AlquilerVacancia, Long> {
@@ -22,8 +22,8 @@ public interface AlquileresVacanciaRepositorio extends CrudRepository<AlquilerVa
                            JOIN CONTRATOS_DE_ALQUILER CDA on AV.ID_CONTRATO_DE_ALQUILER = CDA.ID
                            JOIN CONSULTORIOS C on C.ID = CDA.ID_CONSULTORIO
                            JOIN PROFESIONALES P on CDA.ID_PROFESIONAL = P.ID
-                           WHERE CDA.INICIO_DEL_CONTRATO_DE_ALQUILER >= :inicio AND
-                                 CDA.FIN_DEL_CONTRATO <= :fin AND
+                           WHERE CDA.FIN_DEL_CONTRATO >= :inicio AND
+                                 CDA.INICIO_DEL_CONTRATO_DE_ALQUILER <= :fin AND
                                  CDA.OCULTO = 0
                 """)
     Iterable<CoordenadaDeMatriz> getAlquileresVacanciaParaMatriz(@Param("inicio") Date inicio, @Param("fin") Date fin);

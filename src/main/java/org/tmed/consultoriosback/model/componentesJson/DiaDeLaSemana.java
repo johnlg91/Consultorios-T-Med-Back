@@ -1,4 +1,4 @@
-package org.tmed.consultoriosback.model;
+package org.tmed.consultoriosback.model.componentesJson;
 
 public enum DiaDeLaSemana {
     LUNES,

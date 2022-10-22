@@ -2,6 +2,7 @@ package org.tmed.consultoriosback.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+import org.tmed.consultoriosback.model.componentesJson.DiaDeLaSemana;
 
 import java.sql.Time;
 

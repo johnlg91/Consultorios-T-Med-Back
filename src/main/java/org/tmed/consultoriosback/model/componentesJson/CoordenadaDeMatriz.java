@@ -1,7 +1,6 @@
 package org.tmed.consultoriosback.model.componentesJson;
 
 import org.springframework.boot.jackson.JsonComponent;
-import org.tmed.consultoriosback.model.DiaDeLaSemana;
 
 import java.sql.Time;
 
