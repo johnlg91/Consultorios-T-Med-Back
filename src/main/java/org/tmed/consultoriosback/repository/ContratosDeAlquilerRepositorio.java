@@ -25,6 +25,25 @@ public interface ContratosDeAlquilerRepositorio extends CrudRepository<ContratoD
     @Query("SELECT * FROM CONTRATOS_DE_ALQUILER WHERE OCULTO = 0 AND INICIO_DEL_CONTRATO_DE_ALQUILER <= :fechaInicio AND FIN_DEL_CONTRATO >= :fechaFin")
     Stream<ContratoDeAlquiler> getContratosEntreFechas(@Param("fechaInicio") java.sql.Date fechaInicio, @Param("fechaFin") java.sql.Date fechaFin);
 
+    @Query("SELECT CDA.ID, C.NUMERO_DE_CONSULTORIO, P.SOBRENOMBRE, TIPO_DE_ALQUILER, INICIO_DEL_CONTRATO_DE_ALQUILER, FIN_DEL_CONTRATO, COSTO_TOTAL, CDA.NOTAS " +
+            "FROM CONTRATOS_DE_ALQUILER CDA" +
+            "  INNER JOIN CONSULTORIOS C ON CDA.ID_CONSULTORIO = C.ID" +
+            "  INNER JOIN PROFESIONALES P ON CDA.ID_CONSULTORIO = P.ID" +
+            "  WHERE :fecha BETWEEN INICIO_DEL_CONTRATO_DE_ALQUILER AND FIN_DEL_CONTRATO" +
+            "  AND C.NUMERO_DE_CONSULTORIO = :numConsultorio" +
+            "  AND C.OCULTO = 0" +
+            "  AND CDA.OCULTO = 0")
+    Iterable<ContratoConNombres> getContratosPorNumeroDeConsultorio(@Param("fecha") String fecha, @Param("numConsultorio") long numConsultorio);
+
+    @Query("SELECT * FROM CONTRATOS_DE_ALQUILER CDA" +
+            "  WHERE OCULTO = 0" +
+            "  AND :mes BETWEEN INICIO_DEL_CONTRATO_DE_ALQUILER AND FIN_DEL_CONTRATO" +
+            "  AND ID NOT IN (SELECT ID_CONTRATO_DE_ALQUILER" +
+            "                 FROM TRANSACCIONES_DE_ALQUILERES TDA" +
+            "                 WHERE month(FECHA_DE_TRANSACCION) = month(:mes)" +
+            "                   and year(FECHA_DE_TRANSACCION) = year(:mes))")
+    Iterable<ContratoDeAlquiler> getContratosSinPagar(@Param("mes") String mes);
+
     @Query("SELECT * FROM CONTRATOS_DE_ALQUILER WHERE TIPO_DE_ALQUILER = 'NORMAL'")
     Iterable<ContratoDeAlquiler> getContratosNormales();
 

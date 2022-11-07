@@ -8,14 +8,18 @@ import org.springframework.web.server.ResponseStatusException;
 import org.tmed.consultoriosback.model.ContratoDeAlquiler;
 import org.tmed.consultoriosback.model.componentesJson.ContratoConNombres;
 import org.tmed.consultoriosback.repository.ContratosDeAlquilerRepositorio;
+import org.tmed.consultoriosback.repository.TransaccionesDeAlquilerRepositorio;
 
 @RestController
 public class ContratosController {
 
-    final ContratosDeAlquilerRepositorio contratosRep;
+    private final ContratosDeAlquilerRepositorio contratosRep;
+    private final TransaccionesDeAlquilerRepositorio transaccionesDeAlquilerRep;
+
 
     @Autowired
-    public ContratosController(ContratosDeAlquilerRepositorio contratosRep) {
+    public ContratosController(ContratosDeAlquilerRepositorio contratosRep, TransaccionesDeAlquilerRepositorio transaccionesDeAlquilerRep) {
+        this.transaccionesDeAlquilerRep = transaccionesDeAlquilerRep;
         this.contratosRep = contratosRep;
     }
 
@@ -32,6 +36,21 @@ public class ContratosController {
     @GetMapping("/contratos")
     public Iterable<ContratoDeAlquiler> getContratos() {
         return contratosRep.getContratos();
+    }
+
+    @GetMapping("/contratos/porconsultorio")
+    public Iterable<ContratoConNombres> getContratosPorNumeroDeConsultorio(
+            @Validated
+            @RequestParam(name = "fecha") String fecha,
+            @RequestParam(name = "numConsultorio") long numConsultorio) {
+        return contratosRep.getContratosPorNumeroDeConsultorio(fecha, numConsultorio);
+    }
+
+    @GetMapping("/contratos/apagar")
+    public Iterable<ContratoDeAlquiler> getContratosSinPagar(
+            @Validated
+            @RequestParam(name = "fecha") String fecha) {
+        return contratosRep.getContratosSinPagar(fecha);
     }
 
     @GetMapping("/contratos/excepcionales")
@@ -53,7 +72,6 @@ public class ContratosController {
 
     @PostMapping("/contratos")
     public ContratoDeAlquiler postContrato(@Validated @RequestBody ContratoDeAlquiler contrato) {
-
         return contratosRep.save(contrato);
     }
 

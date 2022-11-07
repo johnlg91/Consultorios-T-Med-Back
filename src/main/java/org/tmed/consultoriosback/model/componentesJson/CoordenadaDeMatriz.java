@@ -1,12 +1,15 @@
 package org.tmed.consultoriosback.model.componentesJson;
 
 import org.springframework.boot.jackson.JsonComponent;
+import org.springframework.data.annotation.Id;
 
 import java.sql.Time;
 
 @JsonComponent
 public class CoordenadaDeMatriz {
 
+    @Id
+    long idAlquilerVacancia;
     DiaDeLaSemana diaDeLaSemana;
     Time empiezaVacancia;
     Time terminaVacancia;
@@ -22,7 +25,8 @@ public class CoordenadaDeMatriz {
     public CoordenadaDeMatriz() {
     }
 
-    public CoordenadaDeMatriz(DiaDeLaSemana diaDeLaSemana, Time empiezaVacancia, Time terminaVacancia, long numeroDeConsultorio, String nombre, String apellido, long idContratoDeAlquiler) {
+    public CoordenadaDeMatriz(long idAlquilerVacancia, DiaDeLaSemana diaDeLaSemana, Time empiezaVacancia, Time terminaVacancia, long numeroDeConsultorio, String nombre, String apellido, long idContratoDeAlquiler) {
+        this.idAlquilerVacancia = idAlquilerVacancia;
         this.diaDeLaSemana = diaDeLaSemana;
         this.empiezaVacancia = empiezaVacancia;
         this.terminaVacancia = terminaVacancia;
@@ -30,6 +34,14 @@ public class CoordenadaDeMatriz {
         this.nombre = nombre;
         this.apellido = apellido;
         this.idContratoDeAlquiler = idContratoDeAlquiler;
+    }
+
+    public long getIdAlquilerVacancia() {
+        return idAlquilerVacancia;
+    }
+
+    public void setIdAlquilerVacancia(long idAlquilerVacancia) {
+        this.idAlquilerVacancia = idAlquilerVacancia;
     }
 
     public Time getEmpiezaVacancia() {

@@ -28,6 +28,7 @@ public class AlquileresVacanciaController {
 
     @GetMapping("/vacancias")
     public Iterable<CoordenadaDeMatriz> getAlquileresVacancias(
+            @Validated
             @RequestParam(name = "inicio") String inicio,
             @RequestParam(name = "fin") String fin
     ) {
@@ -54,6 +55,8 @@ public class AlquileresVacanciaController {
 
     @DeleteMapping("/vacancias/{id}")
     public void deleteAlquilerVacancia(@PathVariable("id") long id) {
-        alquileresVacanciaRep.deleteAlquilerVacancia(id);
+        alquileresVacanciaRep.delete(alquileresVacanciaRep.findById(id).orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Id: " + id + " not found."
+        )));
     }
 }

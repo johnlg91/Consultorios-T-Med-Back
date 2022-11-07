@@ -10,7 +10,7 @@ import java.sql.Date;
 public class TransaccionDeAlquiler {
     @Id
     private long id;
-    private long idProfesional;
+    private long idContratoDeAlquiler;
     private java.sql.Date fechaDeTransaccion;
     private String tipo;
     private String metodoDePago;
@@ -20,9 +20,18 @@ public class TransaccionDeAlquiler {
     public TransaccionDeAlquiler() {
     }
 
-    public TransaccionDeAlquiler(long id, long idProfesional, Date fechaDeTransaccion, String tipo, String metodoDePago, double cantidad, boolean oculto) {
+    public TransaccionDeAlquiler(long idContratoDeAlquiler, Date fechaDeTransaccion, String tipo, String metodoDePago, double cantidad, boolean oculto) {
+        this.idContratoDeAlquiler = idContratoDeAlquiler;
+        this.fechaDeTransaccion = fechaDeTransaccion;
+        this.tipo = tipo;
+        this.metodoDePago = metodoDePago;
+        this.cantidad = cantidad;
+        this.oculto = oculto;
+    }
+
+    public TransaccionDeAlquiler(long id, long idContratoDeAlquiler, Date fechaDeTransaccion, String tipo, String metodoDePago, double cantidad, boolean oculto) {
         this.id = id;
-        this.idProfesional = idProfesional;
+        this.idContratoDeAlquiler = idContratoDeAlquiler;
         this.fechaDeTransaccion = fechaDeTransaccion;
         this.tipo = tipo;
         this.metodoDePago = metodoDePago;
@@ -39,12 +48,12 @@ public class TransaccionDeAlquiler {
     }
 
 
-    public long getIdProfesional() {
-        return idProfesional;
+    public long getIdContratoDeAlquiler() {
+        return idContratoDeAlquiler;
     }
 
-    public void setIdProfesional(long idProfesional) {
-        this.idProfesional = idProfesional;
+    public void setIdContratoDeAlquiler(long idContratoDeAlquiler) {
+        this.idContratoDeAlquiler = idContratoDeAlquiler;
     }
 
 
