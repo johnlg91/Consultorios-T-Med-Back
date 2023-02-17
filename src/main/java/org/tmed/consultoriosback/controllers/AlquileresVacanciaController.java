@@ -42,6 +42,21 @@ public class AlquileresVacanciaController {
         ));
     }
 
+    @GetMapping("/vacancias/reportes")
+    public long getVacanciaReportes(
+            @Validated
+            @RequestParam(name = "inicio") String inicio,
+            @RequestParam(name = "fin") String fin) {
+        long sumaHoras = 0;
+        for (CoordenadaDeMatriz cor : alquileresVacanciaRep.getAlquileresVacanciaParaMatriz(Date.valueOf(inicio), Date.valueOf(fin))) {
+            long horas = ((cor.getTerminaVacancia().getTime() - cor.getEmpiezaVacancia().getTime()) / (1000 * 60 * 60)) % 24;
+            sumaHoras += horas;
+        }
+//        long maxHoras = 14 * 4 * 7;
+//        long[] horas = new long[sumaHoras, maxHoras];
+        return sumaHoras;
+    }
+
     @PostMapping("/vacancias")
     public AlquilerVacancia postAlquilerVacancia(@Validated @RequestBody AlquilerVacancia contrato) {
         return alquileresVacanciaRep.save(contrato);
