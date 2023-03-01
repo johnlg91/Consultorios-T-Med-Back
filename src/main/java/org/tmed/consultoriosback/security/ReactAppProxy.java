@@ -24,21 +24,21 @@ public class ReactAppProxy {
 
     @RequestMapping("/")
     public ResponseEntity<String> mirrorReactHtml(@RequestBody(required = false) String body,
-                                            HttpMethod method, HttpServletRequest request, HttpServletResponse response)
+                                                  HttpMethod method, HttpServletRequest request, HttpServletResponse response)
             throws URISyntaxException {
         return doMirror(body, method, request);
     }
 
     @RequestMapping("/files/**")
     public ResponseEntity<String> mirrorReactFiles(@RequestBody(required = false) String body,
-                                            HttpMethod method, HttpServletRequest request, HttpServletResponse response)
+                                                   HttpMethod method, HttpServletRequest request, HttpServletResponse response)
             throws URISyntaxException {
         return doMirror(body, method, request);
     }
 
     @RequestMapping("/static/**")
     public ResponseEntity<String> mirrorReactStatic(@RequestBody(required = false) String body,
-                                          HttpMethod method, HttpServletRequest request, HttpServletResponse response)
+                                                    HttpMethod method, HttpServletRequest request, HttpServletResponse response)
             throws URISyntaxException {
         return doMirror(body, method, request);
     }
@@ -63,7 +63,7 @@ public class ReactAppProxy {
         RestTemplate restTemplate = new RestTemplate();
         try {
             return restTemplate.exchange(uri, method, httpEntity, String.class);
-        } catch(HttpStatusCodeException e) {
+        } catch (HttpStatusCodeException e) {
             return ResponseEntity.status(e.getRawStatusCode())
                     .headers(e.getResponseHeaders())
                     .body(e.getResponseBodyAsString());
